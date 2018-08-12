@@ -4,7 +4,7 @@ A random walk is a mathematical object, known as a stochastic or random process,
 
 [https://en.wikipedia.org/wiki/Random_walk](https://en.wikipedia.org/wiki/Random_walk)
 
-## Run
+## Bootstrapping
 
 ``` shell
 # Clone the repository
