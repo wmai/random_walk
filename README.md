@@ -2,9 +2,11 @@
 
 A random walk is a mathematical object, known as a stochastic or random process, that describes a path that consists of a succession of random steps on some mathematical space such as the integers.
 
-[https://en.wikipedia.org/wiki/Random_walk](https://en.wikipedia.org/wiki/Random_walk)
+Source: https://en.wikipedia.org/wiki/Random_walk
 
 ## Bootstrapping
+
+For this project you need to have `matplotlib` installed: https://matplotlib.org/faq/installing_faq.html
 
 ``` shell
 # Clone the repository
