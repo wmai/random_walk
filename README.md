@@ -6,7 +6,7 @@ Source: https://en.wikipedia.org/wiki/Random_walk
 
 ## Bootstrapping
 
-**For this project you need to have `matplotlib` installed:** https://matplotlib.org/faq/installing_faq.html
+For this project you need to have `matplotlib` installed: https://matplotlib.org/faq/installing_faq.html
 
 ``` shell
 # Clone the repository
