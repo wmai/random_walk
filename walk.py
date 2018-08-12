@@ -2,7 +2,7 @@
 # @Author: wmai
 # @Date:   2018-07-30 19:23:37
 # @Last Modified by:   William Mai
-# @Last Modified time: 2018-08-12 02:14:58
+# @Last Modified time: 2018-08-12 14:31:44
 
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -16,7 +16,7 @@ colors = ['#0F0BAF', '#0F0BAF', '#0F0BAF', '#0F0BAF', '#ED3B49']
 widths = [0.1, 0.2, 0.2, 0.4, 0.5]
 max_size = 100
 hash = random.getrandbits(128)
-the_file = dir_path + '/examples/example_' + str(hash) + '.png'
+the_file = dir_path + '/results/' + str(hash) + '.png'
 
 
 def generate_walk(length):
