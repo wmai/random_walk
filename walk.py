@@ -2,7 +2,7 @@
 # @Author: wmai
 # @Date:   2018-07-30 19:23:37
 # @Last Modified by:   William Mai
-# @Last Modified time: 2018-08-12 02:04:06
+# @Last Modified time: 2018-08-12 02:14:58
 
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -16,6 +16,7 @@ colors = ['#0F0BAF', '#0F0BAF', '#0F0BAF', '#0F0BAF', '#ED3B49']
 widths = [0.1, 0.2, 0.2, 0.4, 0.5]
 max_size = 100
 hash = random.getrandbits(128)
+the_file = dir_path + '/examples/example_' + str(hash) + '.png'
 
 
 def generate_walk(length):
@@ -60,6 +61,9 @@ for i in range(iterations):
     config = generate_config()
     plt.plot(walk['x'], walk['y'], color=config['color'], linewidth=config['linewidth'])
 
+
 plt.axis('off')
-plt.savefig(dir_path + '/examples/example_' + str(hash) + '.png', bbox_inches=None, dpi=300)
+plt.savefig(the_file, bbox_inches=None, dpi=300)
 plt.close()
+
+print('PNG file created : ' + the_file)
