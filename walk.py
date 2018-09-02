@@ -2,21 +2,24 @@
 # @Author: wmai
 # @Date:   2018-07-30 19:23:37
 # @Last Modified by:   William Mai
-# @Last Modified time: 2018-08-12 14:31:44
+# @Last Modified time: 2018-09-02 19:29:52
 
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 import matplotlib.pyplot as plt
 import random
+import datetime
 
 
 iterations = 50
 colors = ['#0F0BAF', '#0F0BAF', '#0F0BAF', '#0F0BAF', '#ED3B49']
 widths = [0.1, 0.2, 0.2, 0.4, 0.5]
-max_size = 100
+max_height = 960
+max_width = 470
+ts = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 hash = random.getrandbits(128)
-the_file = dir_path + '/results/' + str(hash) + '.png'
+the_file = dir_path + '/results/' + str(ts) + '_' + str(hash) + '.png'
 
 
 def generate_walk(length):
@@ -29,16 +32,16 @@ def generate_walk(length):
         direction = random.choice(['N', 'W', 'S', 'E'])
 
         if direction == 'N':
-            if (y + 1) < (960):
+            if (y + 1) < (max_height):
                 y += 1
         elif direction == 'W':
-            if (x + 1) < (470):
+            if (x + 1) < (max_width):
                 x += 1
         elif direction == 'S':
-            if (y - 1) > (960 * -1):
+            if (y - 1) > (max_height * -1):
                 y += -1
         elif direction == 'E':
-            if (x - 1) > (470 * -1):
+            if (x - 1) > (max_width * -1):
                 x += -1
 
         walk_x.append(x)
