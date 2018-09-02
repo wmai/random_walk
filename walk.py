@@ -2,26 +2,30 @@
 # @Author: wmai
 # @Date:   2018-07-30 19:23:37
 # @Last Modified by:   William Mai
-# @Last Modified time: 2018-08-12 14:31:44
+# @Last Modified time: 2018-09-02 19:23:13
 
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 import matplotlib.pyplot as plt
 import random
+import datetime
 
 
-iterations = 50
-colors = ['#0F0BAF', '#0F0BAF', '#0F0BAF', '#0F0BAF', '#ED3B49']
-widths = [0.1, 0.2, 0.2, 0.4, 0.5]
-max_size = 100
+iterations = 75
+colors = ['#EC7500', '#EC7500', '#EC7500', '#EC7500', '#EC7500',
+          '#EC7500', '#EC7500', '#4CAF50', '#2196F3', '#F44336']
+widths = [0.01, 0.01, 0.02, 0.02, 0.025, 0.035, 0.045]
+max_height = 1000
+max_width = 100
+ts = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 hash = random.getrandbits(128)
-the_file = dir_path + '/results/' + str(hash) + '.png'
+the_file = dir_path + '/results/' + str(ts) + '_' + str(hash) + '.svg'
 
 
 def generate_walk(length):
     # We get the startig position of the walk
-    x, y = random.randint(-50, 50), random.randint(-50, 50)
+    x, y = random.randint(-max_width, max_width), random.randint(-max_height, max_height)
     walk_x = [x]
     walk_y = [y]
 
@@ -29,16 +33,16 @@ def generate_walk(length):
         direction = random.choice(['N', 'W', 'S', 'E'])
 
         if direction == 'N':
-            if (y + 1) < (960):
+            if (y + 1) < (max_height):
                 y += 1
         elif direction == 'W':
-            if (x + 1) < (470):
+            if (x + 1) < (max_width):
                 x += 1
         elif direction == 'S':
-            if (y - 1) > (960 * -1):
+            if (y - 1) > (max_height * -1):
                 y += -1
         elif direction == 'E':
-            if (x - 1) > (470 * -1):
+            if (x - 1) > (max_width * -1):
                 x += -1
 
         walk_x.append(x)
@@ -57,13 +61,26 @@ def generate_config():
 
 
 for i in range(iterations):
-    walk = generate_walk(random.randint(100, 7000))
+    walk = generate_walk(random.randint(50, 50000))
     config = generate_config()
-    plt.plot(walk['x'], walk['y'], color=config['color'], linewidth=config['linewidth'])
+    plt.plot(walk['x'],
+             walk['y'],
+             color=config['color'],
+             linewidth=config['linewidth'])
+    plt.tick_params(axis='both',
+                    top=False,
+                    bottom=False,
+                    left=False,
+                    right=False,
+                    labeltop=False,
+                    labelbottom=False,
+                    labelleft=False,
+                    labelright=False)
 
 
-plt.axis('off')
-plt.savefig(the_file, bbox_inches=None, dpi=300)
+plt.axis('scaled')
+plt.savefig(the_file,  bbox_inches='tight', pad_inches=0, dpi=80, frameon=False,
+            tight_layout=0, orientation='portrait')
 plt.close()
 
-print('PNG file created : ' + the_file)
+print('SVG file created : ' + the_file)
